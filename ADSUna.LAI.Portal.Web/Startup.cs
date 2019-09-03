@@ -31,7 +31,7 @@ namespace ADSUna.LAI.Portal.Web
             });
 
             services.AddDbContext<DBAccessContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DevConnection"))
+                    options.UseSqlServer(Configuration.GetConnectionString("AzureConnection"))
                     
                     
                     );
