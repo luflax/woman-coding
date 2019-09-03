@@ -48,4 +48,6 @@
     </ItemGroup>
   </Target>
 
+  <ProjectExtensions><VisualStudio><UserProperties clientapp_4package-lock_1json__JsonSchema="http://json.schemastore.org/haxelib" /></VisualStudio></ProjectExtensions>
+
 </Project>

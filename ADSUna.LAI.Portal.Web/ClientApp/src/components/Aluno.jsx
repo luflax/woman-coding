@@ -27,9 +27,9 @@ export class Aluno extends Component {
                 </thead>
                 <tbody>
                     {alunos.map(aluno =>
-                        <tr key={aluno.idaluno}>
-                        <td>{aluno.idaluno}</td>
-                        <td>{aluno.registroacademico}</td>
+                        <tr key={aluno.idAluno}>
+                        <td>{aluno.idAluno}</td>
+                        <td>{aluno.registroAcademico}</td>
                         <td>{aluno.cpf}</td>
                         <td>{aluno.nome}</td>
                         </tr>
