@@ -50,7 +50,7 @@ export default function HomePage(props) {
             </Parallax>
 
             <div className={classNames(classes.main, classes.mainRaised)}>
-                <h1> Div vazia</h1>
+                <h1>Testee2</h1>
             </div>
             <Footer />
         </div>
