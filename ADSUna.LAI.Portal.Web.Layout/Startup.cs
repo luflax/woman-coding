@@ -62,6 +62,36 @@ namespace ADSUna.LAI.Portal.Web.Layout
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler("/Error");
+            //    app.UseHsts();
+            //}
+
+            //app.UseHttpsRedirection();
+            //app.UseStaticFiles();
+            //app.UseSpaStaticFiles();
+
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller}/{action=Index}/{id?}");
+            //});
+
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "ClientApp";
+
+            //    if (env.IsDevelopment())
+            //    {
+            //        spa.UseReactDevelopmentServer(npmScript: "start");
+            //    }
+            //});
         }
     }
 }

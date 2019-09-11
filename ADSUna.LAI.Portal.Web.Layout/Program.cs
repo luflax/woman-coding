@@ -12,17 +12,19 @@ namespace ADSUna.LAI.Portal.Web.Layout
 {
     public class Program
     {
-        private static readonly Dictionary<string, string> defaults = new Dictionary<string, string> {{ WebHostDefaults.EnvironmentKey, "Development" }                                                                      };
+        private static readonly Dictionary<string, string> defaults =
+            new Dictionary<string, string> { /*{ WebHostDefaults.EnvironmentKey, "Development" },*/ { WebHostDefaults.EnvironmentKey, "Production" } };
         private static IConfiguration config;
         public static void Main(string[] args)
         {
-            config = new ConfigurationBuilder()
-                .AddInMemoryCollection(defaults)
-                .AddEnvironmentVariables("ASPNETCORE_")
-                .AddCommandLine(args)
-                .Build();
+            CreateWebHostBuilder(args).Build().Run();
+            //config = new ConfigurationBuilder()
+            //    .AddInMemoryCollection(defaults)
+            //    .AddEnvironmentVariables("ASPNETCORE_")
+            //    .AddCommandLine(args)
+            //    .Build();
 
-            CreateWebHostBuilder(args).UseConfiguration(config).Build().Run();
+            //CreateWebHostBuilder(args).UseConfiguration(config).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
