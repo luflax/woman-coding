@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
-import { Aluno } from './components/Aluno';
+import { Layout } from './template/Layout';
+import { Home } from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 export default class App extends Component {
     displayName = App.name
@@ -13,9 +12,8 @@ export default class App extends Component {
         return (
             <Layout>
                 <Route exact path='/' component={Home} />
-                <Route path='/counter' component={Counter} />
-                <Route path='/fetchdata' component={FetchData} />
-                <Route path='/aluno' component={Aluno} />
+                <Route path='/login' component={Login} />
+                <Route path='/register' component={Register} />
             </Layout>
         );
     }

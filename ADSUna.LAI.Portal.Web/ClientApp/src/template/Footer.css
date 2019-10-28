@@ -1,0 +1,11 @@
+footer{
+    background: #0A0A0A;
+    color: #fff;
+}
+footer h3{
+    display: inline-block;
+}
+.contactIcon{
+    margin-right: 10px;
+    cursor: pointer;
+}

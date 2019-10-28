@@ -1,0 +1,19 @@
+.containerRegister{
+    width: 100%;
+    height: var(--min-page-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.containerRegister>.inputBtnIcon{
+    margin-bottom:5px;
+}
+.containerRegister>.btnIcon{
+    margin-top: 15px;
+}
+.containerRegister>h2{
+    color:#EC407A;
+    margin-bottom: 25px;
+}

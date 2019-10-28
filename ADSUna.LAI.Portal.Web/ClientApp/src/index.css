@@ -1,6 +1,10 @@
-@media (max-width: 767px) {
-    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
-    body {
-        padding-top: 50px;
-    }
+@font-face{
+    font-family: 'SourceSerifPro';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/SourceSerifPro-Regular.ttf');
+}
+
+body, html{
+    font-family: 'SourceSerifPro', sans-serif;
 }
