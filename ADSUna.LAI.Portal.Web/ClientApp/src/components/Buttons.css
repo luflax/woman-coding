@@ -1,47 +1,46 @@
-.inputBtnIcon input[type=text],
-.inputBtnIcon input[type=password]{
-    padding: 7px;
-    color: #0a0a0a;
-    background: #777;
-    border: 1px solid;
+.inputBtnIcon input[type="text"],
+.inputBtnIcon input[type="password"] {
+  padding: 7px;
+  color: #0a0a0a;
+  background: #777;
+  border: 1px solid;
 }
-.inputBtnIcon input[type=text]::placeholder,
-.inputBtnIcon input[type=password]::placeholder{
-    color: #A8A8A8;
+.inputBtnIcon input[type="text"]::placeholder,
+.inputBtnIcon input[type="password"]::placeholder {
+  color: #a8a8a8;
 }
-.inputBtnIcon input[type=text]:active,
-.inputBtnIcon input[type=password]:active, 
-.inputBtnIcon input[type=text]:focus,
-.inputBtnIcon input[type=password]:focus {
-    outline-color: #F48FB1;
-    
-}
-
-.inputBtnIcon a{
-    background: #EC407A;
-    padding: 10px 15px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+.inputBtnIcon input[type="text"]:active,
+.inputBtnIcon input[type="password"]:active,
+.inputBtnIcon input[type="text"]:focus,
+.inputBtnIcon input[type="password"]:focus {
+  outline-color: #f48fb1;
 }
 
-.inputBtnIcon.btnClickable a{
-cursor: pointer;
+.inputBtnIcon a {
+  background: #ec407a;
+  padding: 10px 15px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
-.inputBtnIcon.btnLeft a{
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+.inputBtnIcon.btnClickable a {
+  cursor: pointer;
 }
 
-.btnIcon{
-    background-color: #EC407A;
-    color: #fff;
-    padding: 7px 60px;
-    border-radius: 3px;
+.inputBtnIcon.btnLeft a {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
-.btnIcon:hover{
-    color:#fff;
-    text-decoration: none;
+
+.btnIcon {
+  background-color: #ec407a;
+  color: #fff;
+  padding: 7px 60px;
+  border-radius: 3px;
+}
+.btnIcon:hover {
+  color: #fff;
+  text-decoration: none;
 }

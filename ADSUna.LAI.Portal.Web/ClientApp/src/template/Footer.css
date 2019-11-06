@@ -1,11 +1,16 @@
-footer{
-    background: #0A0A0A;
-    color: #fff;
+footer {
+  background: #0a0a0a;
+  color: #fff;
 }
-footer h3{
-    display: inline-block;
+footer h3 {
+  display: inline-block;
 }
-.contactIcon{
-    margin-right: 10px;
-    cursor: pointer;
+.contactIcon {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.imgLogoFooter {
+  width: 80px;
+  margin-right: 10px;
 }
