@@ -1,13 +1,11 @@
 ﻿import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFemale } from "@fortawesome/free-solid-svg-icons";
 
 import "./NavMenu.css";
 
-export class NavMenu extends Component {
+class NavMenu extends Component {
   displayName = NavMenu.name;
 
   render() {
@@ -41,3 +39,5 @@ export class NavMenu extends Component {
     );
   }
 }
+
+export default NavMenu;
