@@ -105,7 +105,7 @@ namespace ADSUna.LAI.Portal.Web.Controllers
             var ok = userManager.CreateAsync(new ApplicationUser()
             {
                 UserName = user.Login,
-                Email = user.Login,
+                Email = user.Email,
                 EmailConfirmed = true
             }, user.Password);
 
