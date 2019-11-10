@@ -11,7 +11,7 @@ namespace ADSUna.LAI.Portal.Web.Models
         public DBAccessContext (DbContextOptions<DBAccessContext> options)
             : base(options)
         {
-            this.Database.EnsureCreated();
+            //this.Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

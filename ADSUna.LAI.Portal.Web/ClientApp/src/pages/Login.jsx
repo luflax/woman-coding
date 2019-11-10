@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import './Login.css'
 import InputButtonIcon from '../components/InputButtonIcon'
 import ButtonIcon from '../components/ButtonIcon';
+import { Container } from 'react-bootstrap';
 
 const Login = props => {
   const[wrongCredentials, setWrongCredentials] = useState(false)
@@ -14,9 +15,16 @@ const Login = props => {
   const[password, setPassword] = useState('')
 
   const tryLogin = async () => {
-    setTryingLogin(true)
+      setTryingLogin(true)
 
-    await new Promise(resolve => setTimeout(resolve, 1000))
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      //esta é a api do login, como fazer a chamada? passar um json: { "Login": "gercy@outlook.com.br", "Password": "123456" }
+      fetch('api/Auth/Login',
+          {
+              method: "POST",
+              body: FormData
+          })
+
     setWrongCredentials(true)
 
     setTryingLogin(false)
