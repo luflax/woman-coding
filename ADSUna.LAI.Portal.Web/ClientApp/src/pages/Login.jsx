@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import { toastr } from "react-redux-toastr";
 
 import "./Login.css";
 import InputButtonIcon from "../components/InputButtonIcon";
@@ -38,8 +39,7 @@ const Login = props => {
         expiration
       } = response.data;
       if (!authenticated) {
-        setErrorMessage(message);
-        setWrongCredentials(true);
+        toastr.error("Não foi possivel entrar", message);
       } else {
         localStorage.setItem(
           "authorization",
@@ -55,8 +55,6 @@ const Login = props => {
     } catch (error) {
       console.log(error);
     }
-
-    setWrongCredentials(true);
 
     setTryingLogin(false);
   };

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route } from "react-router";
+import ReduxToastr from "react-redux-toastr";
 import Layout from "./template/Layout";
 import { Home } from "./pages/Home";
 import Login from "./pages/Login";
@@ -11,12 +12,25 @@ export default class App extends Component {
 
   render() {
     return (
-      <Layout>
-        <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/community" component={Feed} />
-      </Layout>
+      <React.Fragment>
+        <Layout>
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/community" component={Feed} />
+        </Layout>
+        <ReduxToastr
+          timeOut={10000}
+          newestOnTop={true}
+          preventDuplicates
+          position="top-right"
+          getState={state => state.toastr} // This is the default
+          transitionIn="fadeIn"
+          transitionOut="fadeOut"
+          progressBar
+          closeOnToastrClick
+        />
+      </React.Fragment>
     );
   }
 }

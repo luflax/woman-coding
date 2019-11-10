@@ -9,6 +9,8 @@ import {
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { toastr } from "react-redux-toastr";
+
 import "./Register.css";
 import InputButtonIcon from "../components/InputButtonIcon";
 import ButtonIcon from "../components/ButtonIcon";
@@ -26,20 +28,34 @@ export default props => {
       "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
     );
 
-    if (!login || login.length < 4 || !loginAndPasswordPattern.test(login)) {
-      console.log("invalid username");
+    if (!login || login.length < 6 || !loginAndPasswordPattern.test(login)) {
+      toastr.warning(
+        "Nome de usuária inválido",
+        "Deve conter no minimo 6 caracteres dentre letras e números."
+      );
       return;
     }
     if (!email || email.length < 6 || !emailPattern.test(email)) {
-      console.log("invalid email");
+      toastr.warning("Email inválido", "Informe um email válido.");
       return;
     }
     if (email != confirmEmail) {
-      console.log("invalid email confirmation");
+      toastr.warning(
+        "Combinação inválida de email",
+        "Os dois emails não coincidem."
+      );
       return;
     }
-    if (!password || !loginAndPasswordPattern.test(password)) {
-      console.log("invalid password");
+    if (
+      !password ||
+      email.length < 6 ||
+      !loginAndPasswordPattern.test(password)
+    ) {
+      toastr.warning(
+        "Senha inválida",
+        "A senha deve conter no minimo 6 caracteres dentre letras e números."
+      );
+      return;
     }
 
     setTryingRegister(true);
@@ -50,14 +66,12 @@ export default props => {
         password
       });
 
-      console.log("Cadastro realizado");
-      const {
-        authenticated,
-        message,
-        accessToken,
-        created,
-        expiration
-      } = response.data;
+      toastr.info(
+        "Conta criada com sucesso",
+        "Agora faça login para ter acesso ao Woman Coding."
+      );
+
+      return props.history.push("/login");
     } catch (error) {
       console.log(error);
     }
