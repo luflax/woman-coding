@@ -1,18 +1,22 @@
 .inputBtnIcon input[type="text"],
-.inputBtnIcon input[type="password"] {
+.inputBtnIcon input[type="password"],
+.inputBtnIcon input[type="email"] {
   padding: 7px;
   color: #0a0a0a;
   background: #777;
   border: 1px solid;
 }
 .inputBtnIcon input[type="text"]::placeholder,
-.inputBtnIcon input[type="password"]::placeholder {
+.inputBtnIcon input[type="password"]::placeholder,
+.inputBtnIcon input[type="email"]::placeholder {
   color: #a8a8a8;
 }
 .inputBtnIcon input[type="text"]:active,
 .inputBtnIcon input[type="password"]:active,
+.inputBtnIcon input[type="email"]:active,
 .inputBtnIcon input[type="text"]:focus,
-.inputBtnIcon input[type="password"]:focus {
+.inputBtnIcon input[type="password"]:focus,
+.inputBtnIcon input[type="email"]:focus {
   outline-color: #f48fb1;
 }
 
