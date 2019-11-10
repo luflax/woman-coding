@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ADSUna.LAI.Portal.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ADSUna.LAI.Portal.Web.Controllers
 {
     [Route("api/[controller]")]
-    //[ApiController]
+    [ApiController]
+    [Authorize("Bearer")]
     public class AlunoController : Controller
     {
         private readonly DBAccessContext _context;

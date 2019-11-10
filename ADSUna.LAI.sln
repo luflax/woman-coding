@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADSUna.LAI.Portal.Web", "ADSUna.LAI.Portal.Web\ADSUna.LAI.Portal.Web.csproj", "{A4E8E36E-69F4-4A5B-A759-7D2CD53D549E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADSUna.LAI.Portal.Web.Layout", "ADSUna.LAI.Portal.Web.Layout\ADSUna.LAI.Portal.Web.Layout.csproj", "{598F7E10-F2B1-441C-8ABC-81725BF4FFC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADSUna.LAI.Portal.Web.Layout", "ADSUna.LAI.Portal.Web.Layout\ADSUna.LAI.Portal.Web.Layout.csproj", "{598F7E10-F2B1-441C-8ABC-81725BF4FFC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADS.Una.LAI.Login", "ADS.Una.LAI.Login\ADS.Una.LAI.Login.csproj", "{46315E57-EFE6-4C05-B364-1EEE8DEC09CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{598F7E10-F2B1-441C-8ABC-81725BF4FFC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{598F7E10-F2B1-441C-8ABC-81725BF4FFC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{598F7E10-F2B1-441C-8ABC-81725BF4FFC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46315E57-EFE6-4C05-B364-1EEE8DEC09CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46315E57-EFE6-4C05-B364-1EEE8DEC09CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46315E57-EFE6-4C05-B364-1EEE8DEC09CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46315E57-EFE6-4C05-B364-1EEE8DEC09CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
