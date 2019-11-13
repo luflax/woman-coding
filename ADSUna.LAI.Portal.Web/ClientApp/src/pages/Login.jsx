@@ -17,11 +17,9 @@ import { changeToken } from "../actions";
 import { bindActionCreators } from "redux";
 
 const Login = props => {
-  const [wrongCredentials, setWrongCredentials] = useState(false);
   const [tryingLogin, setTryingLogin] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   const tryLogin = async () => {
     setTryingLogin(true);
@@ -53,7 +51,7 @@ const Login = props => {
         return;
       }
     } catch (error) {
-      console.log(error);
+      toastr.error("Não foi possivel entrar", error);
     }
 
     setTryingLogin(false);
@@ -83,7 +81,6 @@ const Login = props => {
         inputValue={password}
       />
 
-      {wrongCredentials ? <h6>{errorMessage}</h6> : ""}
       {tryingLogin ? (
         <div className="overlayLoading">
           <FontAwesomeIcon
@@ -110,7 +107,4 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators({ changeToken }, dispatch);
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

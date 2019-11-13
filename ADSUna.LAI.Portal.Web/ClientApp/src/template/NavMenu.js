@@ -10,32 +10,34 @@ class NavMenu extends Component {
 
   render() {
     return (
-      <Navbar variant="dark" expand="lg">
-        <Navbar.Brand>
-          <Link to={"/"}>
-            <img
-              src={"/assets/images/glasses.png"}
-              alt="Logo"
-              className="imgLogo"
-            ></img>
-            Woman Coding
-          </Link>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse>
-          <Nav>
-            <LinkContainer to={"/"} exact>
-              <Nav.Link>Início</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to={"/login"}>
-              <Nav.Link>Entrar</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to={"/register"}>
-              <Nav.Link>Cadastrar</Nav.Link>
-            </LinkContainer>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <div className="navbarContainer">
+        <Navbar variant="dark" expand="lg">
+          <Navbar.Brand>
+            <Link to={"/"}>
+              <img
+                src={"/assets/images/glasses.png"}
+                alt="Logo"
+                className="imgLogo"
+              ></img>
+              Woman Coding
+            </Link>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse>
+            <Nav>
+              <LinkContainer to={"/"} exact>
+                <Nav.Link>Início</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to={"/login"}>
+                <Nav.Link>Entrar</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to={"/register"}>
+                <Nav.Link>Cadastrar</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
     );
   }
 }

@@ -1,42 +1,42 @@
-﻿.navbar li .glyphicon {
+﻿.navbarContainer .navbar li .glyphicon {
   margin-right: 10px;
 }
-.navbar-inverse {
+.navbarContainer .navbar-inverse {
   border: none;
 }
-.navbar {
+.navbarContainer .navbar {
   background: #0a0a0a;
   margin: 0;
   padding-top: 0;
 }
-.navbar .navbar-nav a {
+.navbarContainer .navbar .navbar-nav a {
   color: #fff;
 }
-.navbar-brand a {
+.navbarContainer .navbar-brand a {
   color: #fff !important;
   text-decoration: none;
 }
-.navbar-toggler {
+.navbarContainer .navbar-toggler {
   border: none;
 }
-.navbar-toggler:focus {
+.navbarContainer .navbar-toggler:focus {
   outline: none;
 }
-.navbar-toggler-icon {
+.navbarContainer .navbar-toggler-icon {
   color: #fff;
 }
 @media (min-width: 992px) {
-  .navbar-collapse .navbar-nav {
+  .navbarContainer .navbar-collapse .navbar-nav {
     margin-left: auto;
   }
-  .navbar .navbar-collapse .navbar-nav a {
+  .navbarContainer .navbar .navbar-collapse .navbar-nav a {
     border-top: 3px solid #fff0;
     transition: all 0.5s ease;
     box-sizing: border-box;
   }
-  .navbar .navbar-collapse .navbar-nav .active,
-  .navbar .navbar-collapse .navbar-nav .active:hover,
-  .navbar .navbar-collapse .navbar-nav .active:focus {
+  .navbarContainer .navbar .navbar-collapse .navbar-nav .active,
+  .navbarContainer .navbar .navbar-collapse .navbar-nav .active:hover,
+  .navbarContainer .navbar .navbar-collapse .navbar-nav .active:focus {
     color: white;
     border-top: 3px solid #ec407a;
     border-top-left-radius: 1px;

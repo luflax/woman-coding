@@ -1,0 +1,55 @@
+.postHeader {
+  background: #fbfbfb;
+  padding: 15px 25px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 3px 3px 3px #ccc;
+}
+.postBody {
+  background: #fff;
+  padding: 15px 25px;
+  box-shadow: 3px 3px 3px #ccc;
+  font-size: 14px;
+  color: #3b3b3b;
+}
+
+.postFooter {
+  background: #fbfbfb;
+  padding: 15px 25px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 3px 3px 3px #ccc;
+}
+.postFooter span {
+  margin-left: 5px;
+  font-size: 12px;
+  color: #888;
+}
+.postHeader span {
+  font-size: 13px;
+  color: rgb(148, 148, 148);
+}
+.postHeader h6 {
+  margin: 0;
+  line-height: 1;
+}
+.communityContainer {
+  font-family: sans-serif;
+}
+.iconBorderActive,
+.iconBorder {
+  cursor: pointer;
+}
+.iconBorderActive path {
+  stroke: black;
+  stroke-width: 15;
+  user-select: none;
+}
+.iconBorder path {
+  stroke: #ec407a;
+  stroke-width: 15;
+  user-select: none;
+}
+.postContainer {
+  margin-top: 20px;
+}

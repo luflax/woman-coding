@@ -38,13 +38,25 @@
   border-bottom-right-radius: 0;
 }
 
+.btnIconSmall {
+  background-color: #ec407a;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 3px;
+}
 .btnIcon {
   background-color: #ec407a;
   color: #fff;
   padding: 7px 60px;
   border-radius: 3px;
 }
-.btnIcon:hover {
+
+.btnIcon:hover,
+.btnIconSmall:hover {
   color: #fff;
   text-decoration: none;
+}
+.btnIconSmall span,
+.btnIcon span {
+  margin-right: 5px;
 }
