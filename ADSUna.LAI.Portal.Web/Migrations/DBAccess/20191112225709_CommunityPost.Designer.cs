@@ -4,14 +4,16 @@ using ADSUna.LAI.Portal.Web.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ADSUna.LAI.Portal.Web.Migrations.DBAccess
 {
     [DbContext(typeof(DBAccessContext))]
-    partial class DBAccessContextModelSnapshot : ModelSnapshot
+    [Migration("20191112225709_CommunityPost")]
+    partial class CommunityPost
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

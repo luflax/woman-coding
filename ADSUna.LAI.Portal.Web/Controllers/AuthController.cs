@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using ADSUna.LAI.Portal.Web.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -26,12 +28,13 @@ namespace ADSUna.LAI.Portal.Web.Controllers
             [FromServices]TokenConfigurations tokenConfigurations)
         {
             bool credenciaisValidas = false;
+            // Verifica a existência do usuário nas tabelas do
+            // ASP.NET Core Identity
+            var userIdentity = userManager
+                .FindByNameAsync(usuario.Login).Result;
+
             if (usuario != null && !String.IsNullOrWhiteSpace(usuario.Login))
             {
-                // Verifica a existência do usuário nas tabelas do
-                // ASP.NET Core Identity
-                var userIdentity = userManager
-                    .FindByNameAsync(usuario.Login).Result;
                 if (userIdentity != null)
                 {
                     // Efetua o login com base no Id do usuário e sua senha
@@ -51,13 +54,13 @@ namespace ADSUna.LAI.Portal.Web.Controllers
 
             if (credenciaisValidas)
             {
-                //ClaimsIdentity identity = new ClaimsIdentity(
-                //    new GenericIdentity(usuario.Login, "Login"),
-                //    new[] {
-                //        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-                //        new Claim(JwtRegisteredClaimNames.UniqueName, usuario.Login)
-                //    }
-                //);
+                ClaimsIdentity identity = new ClaimsIdentity(
+                    new GenericIdentity(usuario.Login, "Login"),
+                    new[] {
+                        new Claim(JwtRegisteredClaimNames.Jti, userIdentity.Id),
+                        new Claim(JwtRegisteredClaimNames.UniqueName, usuario.Login)
+                    }
+                );
 
                 DateTime dataCriacao = DateTime.Now;
                 DateTime dataExpiracao = dataCriacao +
@@ -69,7 +72,7 @@ namespace ADSUna.LAI.Portal.Web.Controllers
                     Issuer = tokenConfigurations.Issuer,
                     Audience = tokenConfigurations.Audience,
                     SigningCredentials = signingConfigurations.SigningCredentials,
-                    //Subject = identity,
+                    Subject = identity,
                     NotBefore = dataCriacao,
                     Expires = dataExpiracao
                 });
@@ -81,6 +84,7 @@ namespace ADSUna.LAI.Portal.Web.Controllers
                     created = dataCriacao.ToString("yyyy-MM-dd HH:mm:ss"),
                     expiration = dataExpiracao.ToString("yyyy-MM-dd HH:mm:ss"),
                     accessToken = token,
+                    userId = userIdentity.Id,
                     message = "OK"
                 };
             }
