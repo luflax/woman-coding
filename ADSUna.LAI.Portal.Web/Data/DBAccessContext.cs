@@ -20,10 +20,12 @@ namespace ADSUna.LAI.Portal.Web.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<CommunityPost>().Property(e => e.PostId).HasDefaultValueSql("newid()");
         }
 
 
-        public DbSet<ADSUna.LAI.Portal.Web.Models.Aluno> Aluno { get; set; }
+        public DbSet<Aluno> Aluno { get; set; }
+        public DbSet<CommunityPost> CommunityPostDbSet { get; set; }
+        public DbSet<CommunityPostLikes> CommunityPostLikesDbSet { get; set; }
     }
 }
