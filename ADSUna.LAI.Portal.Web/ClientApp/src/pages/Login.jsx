@@ -21,6 +21,12 @@ const Login = props => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  function verifyKey(e) {
+    if (e.key == "Enter") {
+      tryLogin();
+    }
+  }
+
   const tryLogin = async () => {
     setTryingLogin(true);
 
@@ -66,6 +72,7 @@ const Login = props => {
         placeholderColor="#fff"
         inputBorderColor="#d4d4d4"
         maxLength={50}
+        onKeyDown={verifyKey}
         onChange={e => setUsername(e.target.value)}
         inputValue={username}
       />
@@ -77,6 +84,7 @@ const Login = props => {
         inputBorderColor="#d4d4d4"
         secret
         maxLength={30}
+        onKeyDown={verifyKey}
         onChange={e => setPassword(e.target.value)}
         inputValue={password}
       />

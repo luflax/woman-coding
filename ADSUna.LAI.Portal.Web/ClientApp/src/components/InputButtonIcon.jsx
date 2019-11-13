@@ -16,6 +16,7 @@ export default props => {
       spellCheck={false}
       maxLength={props.maxLength}
       onChange={props.onChange}
+      onKeyDown={props.onKeyDown}
       value={props.inputValue}
       placeholder={props.placeholder}
       style={{

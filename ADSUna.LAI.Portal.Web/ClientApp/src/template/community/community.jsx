@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 import { Row, Col, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,10 +13,23 @@ import Post from "../../components/Post";
 import "./community.css";
 
 const Community = props => {
-  const accessToken = JSON.parse(localStorage.getItem("authorization"))
-    .accessToken;
+  let accessToken = "";
   const [postText, setPostText] = useState("");
   const [publishingPost, setPublishingPost] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("authorization"))
+      accessToken = JSON.parse(localStorage.getItem("authorization"))
+        .accessToken;
+    else {
+      props.history.push("/login");
+    }
+  }, []);
+
+  function logOut() {
+    localStorage.removeItem("authorization");
+    props.history.push("/login");
+  }
 
   async function publishPost() {
     setPublishingPost(true);
@@ -48,6 +62,7 @@ const Community = props => {
           icon={faUserCircle}
           color="#fff"
           size="2x"
+          onClick={() => logOut()}
         />
       </Navbar>
       <main>
@@ -61,6 +76,7 @@ const Community = props => {
                     rows="4"
                     placeholder="Oque você aprendeu hoje?"
                     value={postText}
+                    spellCheck={false}
                     onChange={e => setPostText(e.target.value)}
                   ></textarea>
                   <ButtonIcon
@@ -86,4 +102,4 @@ const Community = props => {
   );
 };
 
-export default Community;
+export default withRouter(Community);
