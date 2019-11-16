@@ -1,0 +1,44 @@
+.communityContainer main {
+  background-color: #eee;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.communityContainer .postsWidthLimiter {
+  max-width: 650px;
+}
+
+.newPostContainer {
+  margin-top: 20px;
+  background: #fff;
+  padding: 15px 25px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  box-shadow: 3px 3px 3px #ccc;
+  display: flex;
+  flex-direction: column;
+}
+.newPostContainer > * {
+  margin-top: 10px;
+}
+.newPostContainer textarea {
+  resize: none;
+  border: 1px dashed #ddd;
+  border-radius: 2px;
+  padding: 10px 10px;
+  outline: none;
+  overflow-y: scroll;
+  font-size: 14px;
+  transition: font-size 0.2s;
+  opacity: 0.8;
+  color: #3b3b3b;
+}
+.newPostContainer textarea:focus {
+  font-size: 15px;
+}
+.alignSelfEnd {
+  align-self: flex-end;
+}

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ADSUna.LAI.Portal.Web.Migrations.DBAccess
+namespace ADSUna.LAI.Portal.Web.Migrations
 {
     [DbContext(typeof(DBAccessContext))]
     partial class DBAccessContextModelSnapshot : ModelSnapshot

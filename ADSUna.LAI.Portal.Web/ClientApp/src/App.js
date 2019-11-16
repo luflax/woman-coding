@@ -6,6 +6,7 @@ import { Home } from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Feed from "./pages/Feed";
+import Community from "./template/community/community";
 
 export default class App extends Component {
   displayName = App.name;
@@ -17,7 +18,7 @@ export default class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/community" component={Feed} />
+          <Route path="/community" component={Community} />
         </Layout>
         <ReduxToastr
           timeOut={10000}

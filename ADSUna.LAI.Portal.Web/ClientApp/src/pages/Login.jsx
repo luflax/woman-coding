@@ -45,14 +45,7 @@ const Login = props => {
       if (!authenticated) {
         toastr.error("Não foi possivel entrar", message);
       } else {
-        localStorage.setItem(
-          "authorization",
-          JSON.stringify({
-            accessToken,
-            created,
-            expiration
-          })
-        );
+        localStorage.setItem("authorization", JSON.stringify(response.data));
         props.history.push("/community");
         return;
       }

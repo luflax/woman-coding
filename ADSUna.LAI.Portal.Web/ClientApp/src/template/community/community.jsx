@@ -1,48 +1,30 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { withRouter } from "react-router-dom";
-import { Nav, Navbar } from "react-bootstrap";
-import { Row, Col, Container } from "react-bootstrap";
+import React, { useState } from "react";
+import { withRouter, Switch } from "react-router-dom";
+import { Navbar } from "react-bootstrap";
+import { Route, Redirect } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle, faShare } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import ButtonIcon from "../../components/ButtonIcon";
 
-import Post from "../../components/Post";
+import Feed from "../../pages/Feed";
+import MyProfile from "../../pages/MyProfile";
+import Profile from "../../pages/Profile";
 
 import "./community.css";
 
 const Community = props => {
-  let accessToken = "";
-  const [postText, setPostText] = useState("");
-  const [publishingPost, setPublishingPost] = useState(false);
-
-  useEffect(() => {
-    if (localStorage.getItem("authorization"))
-      accessToken = JSON.parse(localStorage.getItem("authorization"))
-        .accessToken;
-    else {
-      props.history.push("/login");
-    }
-  }, []);
-
   function logOut() {
+    setMenuDropped(false);
     localStorage.removeItem("authorization");
-    props.history.push("/login");
+    props.history.push("/login/");
   }
 
-  async function publishPost() {
-    setPublishingPost(true);
-    try {
-      await axios.post("/posts", {
-        postText,
-        accessToken
-      });
-    } catch (excep) {
-      console.log(excep);
-    }
-    setPublishingPost(false);
+  function goToMyProfile() {
+    setMenuDropped(false);
+    props.history.push(`${props.match.path}/myprofile`);
   }
+
+  const [menuDropped, setMenuDropped] = useState(false);
 
   return (
     <div className="communityContainer">
@@ -57,47 +39,36 @@ const Community = props => {
             Woman Coding
           </Link>
         </Navbar.Brand>
-        <FontAwesomeIcon
-          className="userIcon"
-          icon={faUserCircle}
-          color="#fff"
-          size="2x"
-          onClick={() => logOut()}
-        />
+        <div className="userIcon">
+          <FontAwesomeIcon
+            icon={faUserCircle}
+            className="profilePicture"
+            color="#fff"
+            size="2x"
+            onClick={() => setMenuDropped(!menuDropped)}
+          />
+          <div
+            className={`profileMenuDrop ${
+              menuDropped ? "" : "profileMenuDropDisable"
+            }`}
+          >
+            <a href="javascript:void(0)" onClick={e => goToMyProfile()}>
+              Meu perfil
+            </a>
+            <a href="javascript:void(0)" onClick={e => logOut()}>
+              Sair
+            </a>
+          </div>
+        </div>
       </Navbar>
-      <main>
-        <Container className="postsWidthLimiter">
-          <Row>
-            <Col md={12}>
-              <Row>
-                <Col md={12} className="newPostContainer">
-                  <span>Escreva uma publicação:</span>
-                  <textarea
-                    rows="4"
-                    placeholder="Oque você aprendeu hoje?"
-                    value={postText}
-                    spellCheck={false}
-                    onChange={e => setPostText(e.target.value)}
-                  ></textarea>
-                  <ButtonIcon
-                    label="Publicar"
-                    icon={faShare}
-                    className="alignSelfEnd"
-                    small
-                    onClick={e => publishPost()}
-                  />
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-        </Container>
-      </main>
+      <Switch>
+        <Route path={`${props.match.path}/feed`} component={Feed} />
+        <Route path={`${props.match.path}/myprofile`} component={MyProfile} />
+        <Route path={`${props.match.path}/profile/:id`} component={Profile} />
+        <Route exact path={`${props.match.path}/`}>
+          <Redirect to={`${props.match.path}/feed`} />
+        </Route>
+      </Switch>
     </div>
   );
 };

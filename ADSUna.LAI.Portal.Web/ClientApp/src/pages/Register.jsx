@@ -22,6 +22,12 @@ export default props => {
   const [password, setPassword] = useState("");
   const [tryingRegister, setTryingRegister] = useState(false);
 
+  function verifyKey(e) {
+    if (e.key == "Enter") {
+      tryRegister();
+    }
+  }
+
   const tryRegister = async () => {
     const loginAndPasswordPattern = new RegExp("[a-zA-Z0-9]");
     const emailPattern = new RegExp(
@@ -89,6 +95,7 @@ export default props => {
         inputBorderColor="#d4d4d4"
         maxLength={20}
         onChange={e => setLogin(e.target.value)}
+        onKeyDown={verifyKey}
         inputValue={login}
       />
 
@@ -99,6 +106,7 @@ export default props => {
         inputBorderColor="#d4d4d4"
         maxLength={50}
         onChange={e => setEmail(e.target.value)}
+        onKeyDown={verifyKey}
         inputValue={email}
       />
 
@@ -109,6 +117,7 @@ export default props => {
         inputBorderColor="#d4d4d4"
         maxLength={50}
         onChange={e => setConfirmEmail(e.target.value)}
+        onKeyDown={verifyKey}
         inputValue={confirmEmail}
       />
 
@@ -120,6 +129,7 @@ export default props => {
         maxLength={30}
         secret
         onChange={e => setPassword(e.target.value)}
+        onKeyDown={verifyKey}
         inputValue={password}
       />
 

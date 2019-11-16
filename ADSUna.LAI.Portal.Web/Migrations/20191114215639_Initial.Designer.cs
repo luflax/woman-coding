@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ADSUna.LAI.Portal.Web.Migrations.DBAccess
+namespace ADSUna.LAI.Portal.Web.Migrations
 {
     [DbContext(typeof(DBAccessContext))]
-    [Migration("20191112225709_CommunityPost")]
-    partial class CommunityPost
+    [Migration("20191114215639_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

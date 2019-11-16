@@ -43,18 +43,21 @@
   color: #fff;
   padding: 5px 20px;
   border-radius: 3px;
+  transition: opacity 0.2s;
 }
 .btnIcon {
   background-color: #ec407a;
   color: #fff;
   padding: 7px 60px;
   border-radius: 3px;
+  transition: opacity 0.2s;
 }
 
 .btnIcon:hover,
 .btnIconSmall:hover {
   color: #fff;
   text-decoration: none;
+  opacity: 0.8;
 }
 .btnIconSmall span,
 .btnIcon span {
