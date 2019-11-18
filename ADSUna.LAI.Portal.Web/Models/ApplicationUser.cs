@@ -10,6 +10,10 @@ namespace ADSUna.LAI.Portal.Web.Models
     [Table("AspNetUsers")]
     public class ApplicationUser : IdentityUser
     {
+        public string JobTitle { get; set; }
+        public string FullName { get; set; }
+        public string City { get; set; }
+        public string AboutMe { get; set; }
     }
     public class User
     {
@@ -17,6 +21,11 @@ namespace ADSUna.LAI.Portal.Web.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string NewPassword { get; set; }
+        //gercy.campos -> new fields: 18/11/2019 
+        public string JobTitle { get; set; }
+        public string FullName { get; set; }
+        public string City { get; set; }
+        public string AboutMe { get; set; }
     }
     public class TokenConfigurations
     {

@@ -110,7 +110,11 @@ namespace ADSUna.LAI.Portal.Web.Controllers
             {
                 UserName = user.Login,
                 Email = user.Email,
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                JobTitle = user.JobTitle,
+                AboutMe = user.AboutMe,
+                City = user.City,
+                FullName = user.FullName
             }, user.Password);
 
             if (ok.Result.Succeeded)

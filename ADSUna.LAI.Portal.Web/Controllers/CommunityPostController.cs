@@ -113,6 +113,11 @@ namespace ADSUna.LAI.Portal.Web.Controllers
             {
                 return NotFound();
             }
+            var postLikes = _context.CommunityPostLikesDbSet.Where(l => l.PostId == id);
+            foreach (var like in postLikes)
+            {
+                _context.CommunityPostLikesDbSet.Remove(like);
+            }
 
             _context.CommunityPostDbSet.Remove(communityPost);
             await _context.SaveChangesAsync();
