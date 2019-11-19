@@ -145,5 +145,18 @@ namespace ADSUna.LAI.Portal.Web.Controllers
 
             return Ok(like);
         }
+
+        [HttpPost("UnLikePost")]
+        public async Task<IActionResult> UnlinkePost([FromBody] CommunityPost communityPostLiked, [FromServices]SignInManager<ApplicationUser> signInManager)
+        {
+            var loggedUser = signInManager.Context.User.Claims.Where(c => c.Type.Equals("jti")).FirstOrDefault();
+
+            var reaction = _context.CommunityPostLikesDbSet.Where(c => c.PostId == communityPostLiked.PostId && c.UserId == loggedUser.Value).FirstOrDefault();
+            _context.CommunityPostLikesDbSet.Remove(reaction);
+
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
     }
 }

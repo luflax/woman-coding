@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
+using ADSUna.LAI.Portal.Web.Data;
 using ADSUna.LAI.Portal.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -18,6 +19,40 @@ namespace ADSUna.LAI.Portal.Web.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        private readonly CustomIdentityDbContext _context;
+
+        public AuthController(CustomIdentityDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet("ListAllUsers")]
+        [Authorize]
+        public IEnumerable<ApplicationUser> ListAllUser([FromServices]UserManager<ApplicationUser> userManager)
+        {
+            return userManager.Users.AsEnumerable();
+        }
+
+        // GET: api/CommunityPosts/5
+        [HttpGet("getuser/{id}")]
+        [Authorize]
+        public async Task<IActionResult> GetUser([FromRoute] string id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
         [AllowAnonymous]
         [HttpPost("Login")]
         public object Login(
