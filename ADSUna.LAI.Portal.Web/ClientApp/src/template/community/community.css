@@ -10,6 +10,7 @@
   background: #ec407a;
   margin: 0;
   padding: 0.5rem 0.5rem;
+  box-shadow: 2px 0 3px #ccc;
 }
 .communityContainer .navbar .navbar-nav a {
   color: #fff;

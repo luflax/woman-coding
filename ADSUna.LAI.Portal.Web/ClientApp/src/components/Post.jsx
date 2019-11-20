@@ -19,6 +19,7 @@ const Post = props => {
   const [wasLiked, setWasLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
   const [lifeTime, setLifeTime] = useState("");
+  const [authorization, setAuthorization] = useState({});
 
   const { postId, accessToken, userId } = props;
 
@@ -42,7 +43,18 @@ const Post = props => {
   }
 
   useEffect(() => {
+    const authorizationItem = JSON.parse(localStorage.getItem("authorization"));
+    setAuthorization(authorizationItem);
+
     refreshLifeTime();
+
+    setLikesCount(props.likesCount);
+
+    const doILikeIt =
+      props.likes.filter(like => {
+        return like.userId == authorizationItem.userId;
+      }).length > 0;
+    setWasLiked(doILikeIt);
 
     window.setInterval(
       function() {
@@ -56,17 +68,17 @@ const Post = props => {
     setWasLiked(!wasLiked);
     try {
       const response = await axios.post(
-        "api/CommunityPost/LikePost",
+        `api/CommunityPost/${wasLiked ? "Un" : ""}LikePost`,
         {
           postId
         },
         {
           headers: {
-            Authorization: "bearer " + props.authorization.accessToken
+            Authorization: "bearer " + authorization.accessToken
           }
         }
       );
-      //setLikesCount(response.data.likesCount);
+      setLikesCount(response.data.likesCount);
     } catch (excep) {
       console.log(excep);
     }
@@ -76,7 +88,7 @@ const Post = props => {
     try {
       const response = await axios.delete(`/api/CommunityPost/${postId}`, {
         headers: {
-          Authorization: "bearer " + props.authorization.accessToken
+          Authorization: "bearer " + authorization.accessToken
         }
       });
 
@@ -92,9 +104,9 @@ const Post = props => {
         <Row>
           <Col md={12} className="postHeader">
             <Link to={`/community/profile/${userId}`}>
-              <h6>Roberta Santos</h6>
+              <h6>{props.postedBy.fullName}</h6>
             </Link>
-            <span>Desenvolvedora .Net</span>
+            <span>{props.postedBy.jobTitle}</span>
           </Col>
         </Row>
         <Row>
@@ -116,7 +128,7 @@ const Post = props => {
               <span className="postLifeTime">{lifeTime}</span>
             </div>
             <div>
-              {props.userId == props.authorization.userId ? (
+              {props.userId == authorization.userId ? (
                 <FontAwesomeIcon
                   icon={faTrash}
                   color={"#ccc"}

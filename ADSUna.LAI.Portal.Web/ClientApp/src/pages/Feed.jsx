@@ -48,6 +48,7 @@ const Feed = props => {
   function verifyKey(e) {
     if (e.key == "Enter" && !e.shiftKey) {
       publishPost();
+      e.preventDefault();
     }
   }
 
@@ -57,6 +58,7 @@ const Feed = props => {
     setPublishingPost(true);
     try {
       setPostText("");
+
       const response = await axios.post(
         "/api/CommunityPost",
         {
@@ -107,10 +109,11 @@ const Feed = props => {
             const {
               postId,
               postCreatedDate,
-              postTitle,
               postContent,
               userId,
-              postedBy
+              postedBy,
+              likes,
+              likesCount
             } = post;
             return (
               <Post
@@ -120,6 +123,9 @@ const Feed = props => {
                 time={postCreatedDate}
                 authorization={authorization}
                 userId={userId}
+                postedBy={postedBy}
+                likes={likes}
+                likesCount={likesCount}
               />
             );
           })}

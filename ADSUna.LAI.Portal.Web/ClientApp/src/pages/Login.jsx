@@ -40,12 +40,14 @@ const Login = props => {
         message,
         accessToken,
         created,
-        expiration
+        expiration,
+        userId
       } = response.data;
       if (!authenticated) {
         toastr.error("Não foi possivel entrar", message);
       } else {
         localStorage.setItem("authorization", JSON.stringify(response.data));
+
         props.history.push("/community");
         return;
       }

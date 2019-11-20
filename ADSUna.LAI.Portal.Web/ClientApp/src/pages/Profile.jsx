@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Row, Col, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +7,28 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import "./Profile.css";
 
 const Profile = props => {
+  const [fullName, setFullName] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [city, setCity] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
+  const [abilities, setAbilities] = useState("");
+
+  useEffect(() => {
+    const authorizationItem = JSON.parse(localStorage.getItem("authorization"));
+    axios
+      .get(`/api/auth/getuser/${props.match.params.id}`, {
+        headers: { Authorization: "bearer " + authorizationItem.accessToken }
+      })
+      .then(response => {
+        const { fullName, jobTitle, city, aboutMe, abilities } = response.data;
+        setFullName(fullName);
+        setJobTitle(jobTitle);
+        setCity(city);
+        setAboutMe(aboutMe);
+        setAbilities(abilities);
+      });
+  }, []);
+
   return (
     <div className="ProfileContainer">
       <main>
@@ -24,23 +47,23 @@ const Profile = props => {
               <Row className="profileDataContainer">
                 <Col md={6}>
                   <label>Nome completo:</label>
-                  <span>{props.match.params.id}</span>
+                  <span>{fullName}</span>
                 </Col>
                 <Col md={6}>
                   <label>Título do perfil:</label>
-                  <span>Desenvolvedora .Net</span>
+                  <span>{jobTitle}</span>
                 </Col>
                 <Col md={12}>
-                  <label>Endereço:</label>
-                  <span>Belo Horizonte, Brasil</span>
+                  <label>Cidade:</label>
+                  <span>{city}</span>
                 </Col>
                 <Col md={12}>
                   <label>Sobre você:</label>
-                  <span>OKAMSODMOAMSDOASKDOAKSMDOASM</span>
+                  <span>{aboutMe}</span>
                 </Col>
                 <Col md={12}>
                   <label>Suas habilidades:</label>
-                  <span>OKAMSODMOAMSDOASKDOAKSMDOASM</span>
+                  <span>{abilities}</span>
                 </Col>
               </Row>
             </Col>
