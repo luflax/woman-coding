@@ -18,8 +18,10 @@ namespace ADSUna.LAI.Portal.Web.Models
 
         [ForeignKey("PostId")]
         public virtual CommunityPost Post { get; set; }
+
         [ForeignKey("UserId")]
         public virtual ApplicationUser LikedBy { get; set; }
+        
         public CommunityPostLikes()
         {
 

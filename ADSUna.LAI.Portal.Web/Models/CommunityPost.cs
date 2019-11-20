@@ -18,10 +18,14 @@ namespace ADSUna.LAI.Portal.Web.Models
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual ApplicationUser PostedBy { get; set; }
+        [NotMapped]
+        public int LikesCount { get { return Likes.Count; } }
+
+        public virtual ICollection<CommunityPostLikes> Likes { get; set; }
 
         public CommunityPost()
         {
-
+            this.Likes = new HashSet<CommunityPostLikes>();
         }
 
     }

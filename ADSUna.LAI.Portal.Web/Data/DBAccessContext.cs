@@ -8,7 +8,7 @@ namespace ADSUna.LAI.Portal.Web.Models
 {
     public class DBAccessContext : DbContext
     {
-        public DBAccessContext (DbContextOptions<DBAccessContext> options)
+        public DBAccessContext(DbContextOptions<DBAccessContext> options)
             : base(options)
         {
             //this.Database.EnsureCreated();

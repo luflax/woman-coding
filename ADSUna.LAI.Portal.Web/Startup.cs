@@ -30,7 +30,7 @@ namespace ADSUna.LAI.Portal.Web
         //https://medium.com/@renato.groffe/asp-net-core-2-0-jwt-identity-core-na-autentica%C3%A7%C3%A3o-de-apis-e2a6fab07421
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(j => j.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -51,7 +51,7 @@ namespace ADSUna.LAI.Portal.Web
                     options.Password.RequiredLength = 6;
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
-                    
+
                 })
                 .AddEntityFrameworkStores<CustomIdentityDbContext>().AddDefaultTokenProviders();
 
@@ -111,7 +111,7 @@ namespace ADSUna.LAI.Portal.Web
                 app.UseHsts();
             }
             app.UseAuthentication();
-            
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

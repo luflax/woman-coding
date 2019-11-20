@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace ADSUna.LAI.Portal.Web.Controllers
@@ -172,6 +173,47 @@ namespace ADSUna.LAI.Portal.Web.Controllers
                 return Ok();
             else
                 return BadRequest(ok.Result.Errors);
+        }
+
+        [HttpPut("updateuser/{id}")]
+        public async Task<IActionResult> UpdateUser([FromServices]UserManager<ApplicationUser> userManager, [FromRoute] string id, [FromBody] User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ApplicationUser currentUser = await userManager.FindByIdAsync(id);
+
+            currentUser.JobTitle = user.JobTitle;
+            currentUser.Abilities = user.Abilities;
+            currentUser.City = user.City;
+            currentUser.FullName = user.FullName;
+            currentUser.AboutMe = user.AboutMe;
+
+            _context.Entry(currentUser).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+        private bool UserExists(string id)
+        {
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }

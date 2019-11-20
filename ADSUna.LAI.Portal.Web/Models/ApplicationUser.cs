@@ -14,6 +14,7 @@ namespace ADSUna.LAI.Portal.Web.Models
         public string FullName { get; set; }
         public string City { get; set; }
         public string AboutMe { get; set; }
+        public string Abilities { get; set; }
     }
     public class User
     {
@@ -26,6 +27,7 @@ namespace ADSUna.LAI.Portal.Web.Models
         public string FullName { get; set; }
         public string City { get; set; }
         public string AboutMe { get; set; }
+        public string Abilities { get; set; }
     }
     public class TokenConfigurations
     {

@@ -27,7 +27,8 @@ namespace ADSUna.LAI.Portal.Web.Controllers
         [HttpGet]
         public IEnumerable<CommunityPost> GetCommunityPostDbSet()
         {
-            return _context.CommunityPostDbSet;
+            var postList = _context.CommunityPostDbSet.Include(i => i.PostedBy).Include(i => i.Likes).AsEnumerable();
+            return postList;
         }
 
         // GET: api/CommunityPosts/5
@@ -39,7 +40,7 @@ namespace ADSUna.LAI.Portal.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var communityPost = await _context.CommunityPostDbSet.FindAsync(id);
+            var communityPost = await _context.CommunityPostDbSet.Include(i => i.PostedBy).Where(c => c.PostId == id).FirstOrDefaultAsync();
 
             if (communityPost == null)
             {
