@@ -158,8 +158,8 @@ namespace ADSUna.LAI.Portal.Web.Controllers
             _context.CommunityPostLikesDbSet.Remove(reaction);
 
             await _context.SaveChangesAsync();
-
-            return Ok();
+            CommunityPost updatedPost = _context.CommunityPostDbSet.Include(l => l.Likes).FirstOrDefault(p => p.PostId == communityPostLiked.PostId);
+            return Ok(updatedPost);
         }
     }
 }
