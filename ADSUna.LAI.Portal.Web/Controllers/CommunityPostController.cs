@@ -97,7 +97,9 @@ namespace ADSUna.LAI.Portal.Web.Controllers
             _context.CommunityPostDbSet.Add(communityPost);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCommunityPost", new { id = communityPost.PostId }, communityPost);
+            CommunityPost createdPost = await _context.CommunityPostDbSet.Include(u => u.PostedBy).FirstOrDefaultAsync(i => i.PostId == communityPost.PostId);
+
+            return CreatedAtAction("GetCommunityPost", new { id = communityPost.PostId }, createdPost);
         }
 
         // DELETE: api/CommunityPosts/5
