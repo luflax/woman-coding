@@ -1,4 +1,4 @@
 # Woman Coding
 
-Neste projeto utilizei o framework React.js para o frontend e C# para o backend.
-O backend da aplicação foi desenvolvido pelo Gercy. Repositório do backend: https://github.com/gercyc/ADSUna.LAI
+IT focused social network for helping women get introduced in the area.
+This front end application was developed using React.JS and the back end was created using C# by a colleague, follow the repository: https://github.com/gercyc/ADSUna.LAI
